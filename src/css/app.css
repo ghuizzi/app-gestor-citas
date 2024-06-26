@@ -1,4 +1,14 @@
-.border-radius{
-    border: 1px solid  lightgrey;
+.border-simple{
+    border: 1px solid  rgb(214, 212, 212);
     border-radius: 5px;
+}
+
+.relative{
+    position: relative;
+}
+
+.svg_circle{
+    position: absolute;
+    top: -46px;
+    left: -77px;
 }

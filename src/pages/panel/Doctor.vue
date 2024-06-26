@@ -1,39 +1,8 @@
 <template>
     <div class="row justify-center q-px-md">
-        <div class="col-12 col-md-11 row q-py-md items-stretch ">
-            <div class="col-12 row q-gutter-md  q-pb-md desktop-only" >
-                <div class=" col-12 col-md-3 border-radius text-grey-6 flex justify-center row q-pa-sm "  >
-                    <div class="col-12 text-h6 text-center" >
-                        Total pacientes
-                    </div>
-                    <div class="col-12 justify-center flex">
-                        <q-icon size="60px" class="fa-solid fa-users"/>
-                    </div>
-                </div>
-                <div class=" col-12 col-md-3 border-radius text-grey-6 flex justify-center row  q-pa-sm q-"  >
-                    <div class="col-12 text-h6 text-center" >
-                        Proximas citas
-                    </div>
-                    <div class="col-12 justify-center flex">
-                        <q-icon size="60px" class="fa-regular fa-calendar"/>
-                    </div>
-                </div>
-                <div class="col-12 col-md-3 border-radius text-grey-6 flex justify-center row  q-pa-sm "  >
-                    <div class="col-12 text-h6 text-center" >
-                        Agregar Paciente
-                    </div>
-                    <div class="col-12 justify-center flex">
-                        <q-icon size="60px" class="fa-regular fa-user"/>
-                    </div>
-                </div>
-                 <div class=" col-12 col-md-3 border-radius text-grey-6 flex justify-center row q-pa-sm"  >
-                    <div class="col-12 text-h6 text-center" >
-                        Agregar tratamiento
-                    </div>
-                    <div class="col-12 justify-center flex">
-                        <q-icon size="60px" class="fa-regular fa-user"/>
-                    </div>
-                </div>
+        <div class="col-12 col-md-10 row q-py-md items-stretch ">
+            <div class="col-12 row   q-pb-md desktop-only" >
+                <MenuCards />
             </div>
             <div class="col-12 col-md-6 items-stretch">
                 <q-date  v-model="date" minimal locale="es-ES" type='datetime-local' :first-day-of-week="1" style="width: 100%; height:100%"  >
@@ -94,8 +63,8 @@
 </template>
 <script lang="ts">
 import { ref } from "vue";
+import MenuCards from 'src/components/cards/MenuCards.vue';
 
-let search = ref<string>('')
 let patients = ref ([
     {
         icon: 'fa-solid fa-user',
@@ -120,10 +89,14 @@ let patients = ref ([
     }
 ])
 export default {
+components:{
+    MenuCards
+},
     setup() {
         return {
             patients,
-            search
+            search : ref<string>('')
+
         }
     }
 }
