@@ -1,12 +1,46 @@
 <template>
     <div class="row justify-center q-px-md">
-        <div class="col-12 col-md-11 row q-py-md">
-            <div class="col-12 col-md-6">
-                <q-date  v-model="date" minimal locale="es-ES" type='datetime-local' :first-day-of-week="1" style="width: 100%"  >
+        <div class="col-12 col-md-11 row q-py-md items-stretch ">
+            <div class="col-12 row q-gutter-md  q-pb-md desktop-only" >
+                <div class=" col-12 col-md-3 border-radius text-grey-6 flex justify-center row q-pa-sm "  >
+                    <div class="col-12 text-h6 text-center" >
+                        Total pacientes
+                    </div>
+                    <div class="col-12 justify-center flex">
+                        <q-icon size="60px" class="fa-solid fa-users"/>
+                    </div>
+                </div>
+                <div class=" col-12 col-md-3 border-radius text-grey-6 flex justify-center row  q-pa-sm q-"  >
+                    <div class="col-12 text-h6 text-center" >
+                        Proximas citas
+                    </div>
+                    <div class="col-12 justify-center flex">
+                        <q-icon size="60px" class="fa-regular fa-calendar"/>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 border-radius text-grey-6 flex justify-center row  q-pa-sm "  >
+                    <div class="col-12 text-h6 text-center" >
+                        Agregar Paciente
+                    </div>
+                    <div class="col-12 justify-center flex">
+                        <q-icon size="60px" class="fa-regular fa-user"/>
+                    </div>
+                </div>
+                 <div class=" col-12 col-md-3 border-radius text-grey-6 flex justify-center row q-pa-sm"  >
+                    <div class="col-12 text-h6 text-center" >
+                        Agregar tratamiento
+                    </div>
+                    <div class="col-12 justify-center flex">
+                        <q-icon size="60px" class="fa-regular fa-user"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 items-stretch">
+                <q-date  v-model="date" minimal locale="es-ES" type='datetime-local' :first-day-of-week="1" style="width: 100%; height:100%"  >
 
                 </q-date>
             </div>
-            <div class="col-12 col-md-6 q-pl-md ">
+            <div class="col-12 col-md-6 q-pl-md  ">
                 <v-panel>
                     <div class="flex row justify-between items-center q-pb-md " >
                         <div class="col-12 text-weight-bolder text-grey-7 text-subtitle1" >Proximos pacientes</div>
@@ -28,7 +62,7 @@
                     </div>
                     
                     <div class="row  " >
-                        <div v-for="(patient, index) in patients" :key="index" class="col-12 text-grey-7 row shadow-1 rounded-borders q-mb-md flex justify-between items-center "  >
+                        <div v-for="(patient, index) in patients" :key="index" :class="{'q-mb-md': index < patients.length - 1}" class="col-12 text-grey-7 row bg-img shadow-1  flex justify-between items-center "  >
                             <div class="col-3 col-md-2 " >
                                 <q-avatar size="80px" >
                                     <q-icon :name="patient.icon" color="grey"/>
@@ -94,3 +128,9 @@ export default {
     }
 }
 </script>
+<style >
+.border-radius{
+    border: 1px solid  lightgrey;
+    border-radius: 5px;
+}
+</style>

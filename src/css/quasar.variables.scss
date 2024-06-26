@@ -23,3 +23,12 @@ $positive  : #21BA45;
 $negative  : #C10015;
 $info      : #31CCEC;
 $warning   : #F2C037;
+$space-unit: 8px;
+
+$button-border-radius: 4px;
+$generic-border-radius: 4px;
+
+:root {
+  --space-unit: #{$space-unit};
+  --generic-border-radius: #{$generic-border-radius};
+}
