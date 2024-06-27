@@ -65,10 +65,16 @@
     <q-page-container  >
       <router-view />
     </q-page-container>
+
+    <!-- Waves laterales -->
+    <WavesLaterales/>
+    
+
   </q-layout>
 </template>
 
 <script setup lang="ts">
+import WavesLaterales from 'src/components/svg/wavesLaterales.vue';
 import { ref, watch } from 'vue';
 import { RouteLocationRaw, useRoute, useRouter } from 'vue-router';
 const isDrawerOpen = ref(false);
