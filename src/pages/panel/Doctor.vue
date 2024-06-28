@@ -1,13 +1,6 @@
 <template>
     <div class="row justify-center q-px-md">
         <div class="col-12 col-md-11 row q-py-md items-stretch ">
-            <div class="col-12 row   q-pb-md desktop-only" >
-                <MenuCards />
-            </div>
-
-            <div class="col-12 q-pb-md ">
-                <q-separator></q-separator>
-            </div>
 
             <div class="col-12 col-md-6 row items-stretch">
                 <div class="col-12 text-center q-py-sm ">

@@ -11,16 +11,8 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('../layouts/MainLayout.vue'),
     children: [
-      {
-        path: '',
-        name: 'Panel',
-        meta: {
-          drawerName: 'Panel',
-          title: 'Inicio',
-          
-        },
-        component: () => import('../../src/pages/panel/Doctor.vue'),
-      },
+      { path: '', name: 'Panel', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/panel/Doctor.vue') },
+      { path: '/pacientes', name: 'Pacientes', meta: { drawerName: 'Panel', title: 'Pacientes',}, component: () => import('../../src/pages/panel/Pacientes.vue') },
     ]
   },
 

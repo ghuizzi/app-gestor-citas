@@ -1,6 +1,6 @@
 <template>
     <div  v-for="card in optionCards" :key="card.title" class=" col-12 col-md-3  q-pa-sm  "  >
-        <div style="overflow: hidden" class="col-12  row q-pa-sm border-simple row relative items-center">
+        <div @click="$router.push(card.route)" style="overflow: hidden" class="col-12  row q-pa-sm border-simple row relative items-center">
             
             <div style="z-index: 1" class="col-4 justify-center flex q-my-sm ">
                 <q-icon class="text-white" size="30px" :name="card.icon"/>
@@ -29,22 +29,26 @@ export default defineComponent({
             {
                 title: 'Pacientes \n totales',
                 icon: 'fa-solid fa-users',
-                bg_color: '#54a0ff'
-            },
-            {
-                title: 'Próximas \n citas',
-                icon: 'fa-regular fa-calendar',
-                bg_color: '#1dd1a1'
+                bg_color: '#54a0ff',
+                route: '/Pacientes'
             },
             {
                 title: 'Agregar \n Paciente',
                 icon: 'fa-solid fa-user-plus',
-                bg_color: '#f368e0'
+                bg_color: '#f368e0',
+                route: '/'
+            },
+            {
+                title: 'Próximas \n citas',
+                icon: 'fa-regular fa-calendar',
+                bg_color: '#1dd1a1',
+                route: '/'
             },
             {
                 title: 'Agregar \n tratamiento',
                 icon: 'fa-solid fa-tooth',
-                bg_color: '#ff9f43'
+                bg_color: '#ff9f43',
+                route: '/'
             }
         ]
         }
