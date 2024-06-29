@@ -4,13 +4,13 @@
 
         <div class="col-12 text-center ">
             <p class="text-h4 q-py-md">
-                Lista de pacientes
+                Agregar tratamiento
             </p>
         </div>
         
-        <div class="col-12 row ">
+        <div class="col-12 row justify-center">
 
-            <PatientsCards/>
+            <NewTreatment/>
 
         </div>
 
@@ -20,10 +20,10 @@
     </div>
 </template>
 <script lang="ts">
-import PatientsCards from 'src/components/cards/PatientsCards.vue'
+import NewTreatment from 'src/components/forms/NewTreatment.vue'
 export default {
 components:{
-    PatientsCards
+    NewTreatment
 },
     setup() {
         return {

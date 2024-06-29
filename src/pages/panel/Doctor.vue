@@ -13,7 +13,7 @@
             <div class="col-12 col-md-6 q-pl-md ">
                 <v-panel>
                     <div class="flex row justify-between items-center q-pb-md " >
-                        <div class="col-12 text-weight-bolder text-grey-7 text-subtitle1" >Proximos pacientes</div>
+                        <div class="col-12 text-weight-bolder text-grey-7 text-subtitle1" >Próximas citas</div>
                         <div class="col-md-9 flex row ">
                             <div class="q-pr-md col-6 "  >
                                <q-input placeholder="Buscar ..." outlined rounded v-model="search"  type="search" dense>

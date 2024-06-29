@@ -1,7 +1,7 @@
 <template>
   <q-layout class="row justify-center " view="hHh Lpr lff">
     <q-header >
-      <q-toolbar class="bg-primary">
+      <q-toolbar class="bg-primary flex justify-between">
         <!-- <q-btn
           flat
           dense
@@ -11,20 +11,28 @@
           @click="()=>( isDrawerOpen = !isDrawerOpen)"
         /> -->
 
-        <div class="text-h6" >
-          <i class="fa-solid fa-tooth"></i>
-          Clinica Dental
+        <q-btn @click="$router.push('/')" flat icon="home" >
+          Inicio
+        </q-btn>
+
+        <div class="flex items-center">
+          <div class="text-h6 q-pr-md" >
+            <i class="fa-solid fa-tooth"></i>
+            Clinica Dental
+          </div>
+
+          <div  class="col row justify-end items-center "
+          style="column-gap: var(--space-unit)">
+            <q-btn round flat color="white" icon="fa-solid fa-bell">
+              <q-badge round floating color="primary" class="q-mt-xs q-mr-xs" />
+              <q-menu style="width: 400px" max-width="400px" max-height="400px">
+                
+              </q-menu>
+            </q-btn>
+          </div>
         </div>
 
-        <div  class="col row justify-end items-center "
-        style="column-gap: var(--space-unit)">
-         <q-btn round flat color="white" icon="fa-solid fa-bell">
-          <q-badge round floating color="primary" class="q-mt-xs q-mr-xs" />
-          <q-menu style="width: 400px" max-width="400px" max-height="400px">
-            
-          </q-menu>
-        </q-btn>
-        </div>
+        
       </q-toolbar>
     </q-header>
 
