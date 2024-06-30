@@ -1,18 +1,19 @@
 <template>
-    <div class="row full-width justify-center q-px-md">
-       <div class="col-11 bg-white shadow-2 rounded col-md-10 row">
+    <div class="row  justify-center q-px-md ">
+       <div class="col-11 col-md-6 glass shadow-2 rounded  row q-pa-md ">
 
-        <div class="col-12 text-center ">
-            <p class="text-h4 q-py-md">
-                Agregar paciente
-            </p>
-        </div>
+            <div class="col-12  q-pa-md flex justify-center items-center ">
+                <div><q-icon size="20px" name="fa-solid fa-user-plus" /></div>
+                <div class="text-h6 text-center ">
+                    Agregar paciente
+                </div>
+            </div>
         
-        <div class="col-12 row justify-center">
+            <div class="col-12  row justify-center">
 
-            <NewPatient/>
+                <NewPatient/>
 
-        </div>
+            </div>
 
        </div>
 

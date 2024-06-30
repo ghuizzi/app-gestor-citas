@@ -1,11 +1,12 @@
 <template>
-    <div class="row full-width justify-center q-px-md">
-       <div class="col-11 bg-white shadow-2 rounded col-md-10 row">
+    <div class="row  justify-center q-px-md">
+       <div class="col-11 glass shadow-2 rounded col-md-6 row q-pa-md" >
 
-        <div class="col-12 text-center ">
-            <p class="text-h4 q-py-md">
+        <div class="col-12 q-pa-md flex justify-center items-center ">
+            <div><q-icon size="20px" name="add" /></div>
+            <div class="text-h6  ">
                 Agregar tratamiento
-            </p>
+            </div>
         </div>
         
         <div class="col-12 row justify-center">

@@ -2,14 +2,14 @@
   <q-layout class="row justify-center " view="hHh Lpr lff">
     <q-header >
       <q-toolbar class="bg-primary flex justify-between">
-        <!-- <q-btn
+        <q-btn
           flat
           dense
           round
           :icon="isDrawerOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
           aria-label="Menu"
           @click="()=>( isDrawerOpen = !isDrawerOpen)"
-        /> -->
+        /> 
 
         <q-btn @click="$router.push('/')" flat icon="home" >
           Inicio
@@ -39,6 +39,10 @@
     <div style="margin-top: 10vh" class="col-11 col-md-11 row q-pb-md desktop-only" >
         <MenuCards />
     </div>
+    <div style="height: 100%; width: 100%; position: absolute; z-index: -100;" >
+      <Background/>
+    </div>
+    
     
    <q-drawer
       v-model="isDrawerOpen"
@@ -75,13 +79,14 @@
     </q-drawer> 
 
     <q-page-container class="col-12" style="padding-top: 0px !important" >
+      
       <router-view />
     </q-page-container>
 
     <!-- Waves laterales -->
-    <div class="col-12">
+    <!-- <div class="col-12">
       <WavesLaterales/>
-    </div>
+    </div> -->
     
 
   </q-layout>
@@ -92,6 +97,7 @@ import MenuCards from 'src/components/cards/MenuCards.vue';
 import WavesLaterales from 'src/components/svg/wavesLaterales.vue';
 import { ref, watch } from 'vue';
 import { RouteLocationRaw, useRoute, useRouter } from 'vue-router';
+import Background from 'src/components/Background.vue'
 
 const isDrawerOpen = ref(false);
 defineOptions({
