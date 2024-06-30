@@ -36,10 +36,10 @@
       </q-toolbar>
     </q-header>
 
-    <div style="margin-top: 10vh" class="col-11 col-md-11 row q-pb-md desktop-only" >
+    <div v-if="route.name != 'profile-doctor'" style="margin-top: 10vh" class="col-11 col-md-11 row q-pb-md desktop-only" >
         <MenuCards />
     </div>
-    <div style="height: 100%; width: 100%; position: absolute; z-index: -100;" >
+    <div v-if="route.name !='profile-doctor'" style="height: 100%; width: 100%; position: absolute; z-index: -100;" >
       <Background/>
     </div>
     
@@ -54,10 +54,10 @@
         <q-item
           clickable
           :class="`text-${
-                isDrawerOpen ? 'grey-7' :
+                isDrawerOpen ? 'primary' :
                 item.targetRouteNames &&
                 item.targetRouteNames.includes($route.name as string)
-                  ? 'primary'
+                  ? 'white'
                   : 'grey'
               }` "
           v-ripple
@@ -84,9 +84,9 @@
     </q-page-container>
 
     <!-- Waves laterales -->
-    <!-- <div class="col-12">
+     <div style="z-index: -1"v-if="route.name == 'profile-doctor'" class="col-12">
       <WavesLaterales/>
-    </div> -->
+    </div> 
     
 
   </q-layout>
@@ -98,6 +98,8 @@ import WavesLaterales from 'src/components/svg/wavesLaterales.vue';
 import { ref, watch } from 'vue';
 import { RouteLocationRaw, useRoute, useRouter } from 'vue-router';
 import Background from 'src/components/Background.vue'
+
+
 
 const isDrawerOpen = ref(false);
 defineOptions({
@@ -119,7 +121,8 @@ const drawerItems: Array<DrawerItemInfo> = [
   {
     label: 'Perfil',
     icon: 'fa-solid fa-user-circle',
-    targetRouteNames: ['Panel-profile'],
+    to: 'profile-doctor',
+    targetRouteNames: ['profile-doctor'],
     
   },
    {
