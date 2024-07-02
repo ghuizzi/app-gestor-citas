@@ -2,14 +2,14 @@
   <q-layout class="row justify-center " view="hHh Lpr lff">
     <q-header >
       <q-toolbar class="bg-primary flex justify-between">
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           :icon="isDrawerOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
           aria-label="Menu"
           @click="()=>( isDrawerOpen = !isDrawerOpen)"
-        /> 
+        />  -->
 
         <q-btn @click="$router.push('/')" flat icon="home" >
           Inicio
@@ -30,19 +30,28 @@
               </q-menu>
             </q-btn>
           </div>
+          <div>
+            <q-avatar
+              size="60px"
+              icon="fa-regular fa-circle-user"
+              text-color="grey-4"
+              @click="router.push({name: 'profile-doctor'})"
+              class="cursor-pointer"
+            />
+          </div>
         </div>
 
         
       </q-toolbar>
     </q-header>
 
-    <div v-if="route.name != 'profile-doctor'" style="margin-top: 10vh" class="col-11 col-md-11 row q-pb-md desktop-only" >
+    <div v-if="route.name != 'profile-doctor'"  style="margin-top: 10vh" class="col-11 col-md-11 row q-pb-md desktop-only" >
         <MenuCards />
     </div>
-    <div v-if="route.name !='profile-doctor'" style="height: 100%; width: 100%; position: absolute; z-index: -100;" >
+     <div  style="height: 100%; width: 100%; position: absolute; z-index: -100;" >
       <Background/>
     </div>
-    
+     
     
    <q-drawer
       v-model="isDrawerOpen"
@@ -78,13 +87,17 @@
       </q-list>
     </q-drawer> 
 
-    <q-page-container class="col-12" style="padding-top: 0px !important" >
-      
+    <q-page-container class="col-12  " style="padding-top: 0px !important" >
+       
       <router-view />
     </q-page-container>
-
+    <!-- waves <top-->
+     <div v-if="route.name == 'profile-doctor'" class="col-12" >
+      <WavesTop/>
+ 
+     </div>
     <!-- Waves laterales -->
-     <div style="z-index: -1"v-if="route.name == 'profile-doctor'" class="col-12">
+     <div v-if="route.name != 'profile-doctor'" style="" class="col-12">
       <WavesLaterales/>
     </div> 
     
@@ -95,6 +108,7 @@
 <script setup lang="ts">
 import MenuCards from 'src/components/cards/MenuCards.vue';
 import WavesLaterales from 'src/components/svg/wavesLaterales.vue';
+import WavesTop from 'src/components/svg/wavesTop.vue';
 import { ref, watch } from 'vue';
 import { RouteLocationRaw, useRoute, useRouter } from 'vue-router';
 import Background from 'src/components/Background.vue'
@@ -128,7 +142,8 @@ const drawerItems: Array<DrawerItemInfo> = [
    {
     label: 'Pacientes',
     icon: 'fa-regular fa-face-smile',
-    targetRouteNames: ['Panel-profile'],
+    to: 'patients',
+    targetRouteNames: ['patients'],
     props: ['separator-top'],
   },
   {

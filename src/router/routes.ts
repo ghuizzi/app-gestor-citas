@@ -17,8 +17,8 @@ const routes: RouteRecordRaw[] = [
       { path: '/newpaciente', name: 'Nuevo paciente', meta: { drawerName: 'Panel', title: 'Pacientes',}, component: () => import('../../src/pages/panel/AgregarPaciente.vue') },
       { path: '/', name: 'Proxímas citas', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/panel/Doctor.vue') },
       { path: '/newtratamiento', name: 'Nuevo tratamiento', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/panel/AgregarTratamiento.vue') },
-      {path:'/profile', name: 'profile-doctor', meta: {drawerName: 'Panel', title: 'Inicio',},component: ()=>import('../../src/pages/panel/Profile.vue')}
-    
+      {path:'/profile', name: 'profile-doctor', meta: {drawerName: 'Panel', title: 'Inicio',},component: ()=>import('../../src/pages/panel/Profile.vue')},
+      {path:'/patients', name: 'patients', meta: {drawerName: 'Panel', title: 'Inicio',},component: ()=>import('../../src/pages/panel/Patients.vue')}
     ]
   },
 
