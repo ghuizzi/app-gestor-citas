@@ -1,7 +1,7 @@
 <template>
     <div class="row col-12 flex justify-center ">
         <div class="col-12 row justify-center" >
-            <div class=" col-12 col-sm-6 col-md-6 q-py-md">
+            <q-form class=" col-12 col-sm-8  bg-glass-dark col-md-10 q-pa-lg">
                 <div>Nombre*</div>
                 <q-input outlined dense v-model="namePatient" :rules="[notEmpty]"  />
                 
@@ -23,7 +23,7 @@
                 <q-input outlined dense autogrow />
                 <div class="col-12 flex justify-end q-pt-md "> <q-btn color="teal" dense label="guardar"/></div>
                 
-            </div>
+            </q-form>
         </div> 
     </div>
     

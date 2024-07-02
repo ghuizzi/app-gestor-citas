@@ -1,7 +1,7 @@
 <template>
     <div v-for="n in 12" :key="n" class="col-11 col-md-4 q-pa-sm row">
 
-            <div class="col-12 border-simple items-center row">
+            <div class="col-12 bg-white border-simple items-center row">
 
                 <div class="col-2 bg-blue text-center border-radius-left q-pa-sm  ">
                     <q-icon name="person" color="white" size="40px" ></q-icon>

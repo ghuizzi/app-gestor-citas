@@ -35,10 +35,10 @@ export default defineComponent({
             optionCards : [
             
             {
-                title: 'Número de \n pacientes',
+                title: 'Listado de \n pacientes',
                 icon: 'fa-solid fa-user',
                 bg_color: '#54a0ff',
-                route: '/newPaciente'
+                route: '/pacientes'
             },
             {
                 title: ' Agregar \n Paciente',
@@ -50,7 +50,7 @@ export default defineComponent({
                 title: 'Próximas \n citas',
                 icon: 'fa-regular fa-calendar',
                 bg_color: '#f368e0',
-                route: '/citas'
+                route: '/'
             },
             {
                 title: 'Agregar \n tratamiento',

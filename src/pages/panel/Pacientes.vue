@@ -1,14 +1,14 @@
 <template>
     <div class="row full-width justify-center q-px-md">
-       <div class="col-11 bg-white shadow-2 rounded col-md-10 row">
+       <div class="col-11 bg-glass shadow-2 rounded col-md-10 row">
 
-        <div class="col-12 text-center ">
+        <div class="col-12 text-center text-dark ">
             <p class="text-h4 q-py-md">
                 Lista de pacientes
             </p>
         </div>
         
-        <div class="col-12 row ">
+        <div class="col-12 row q-pa-md ">
 
             <PatientsCards/>
 
