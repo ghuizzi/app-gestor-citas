@@ -2,18 +2,14 @@
   <q-layout class="row justify-center " view="hHh Lpr lff">
     <q-header >
       <q-toolbar class="bg-primary flex justify-between">
-        <!-- <q-btn
+        <q-btn
           flat
           dense
           round
           :icon="isDrawerOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"
           aria-label="Menu"
           @click="()=>( isDrawerOpen = !isDrawerOpen)"
-        />  -->
-
-        <q-btn @click="$router.push('/')" flat icon="home" >
-          Inicio
-        </q-btn>
+        /> 
 
         <div class="flex items-center">
           <div class="text-h6 q-pr-md" >
@@ -45,9 +41,6 @@
       </q-toolbar>
     </q-header>
 
-    <div v-if="route.name != 'profile-doctor'"  style="margin-top: 10vh" class="col-11 col-md-11 row q-pb-md desktop-only" >
-        <MenuCards />
-    </div>
      <div  style="height: 100%; width: 100%; position: absolute; z-index: -100;" >
       <Background/>
     </div>
@@ -59,7 +52,6 @@
     >
       <q-list>
        <template v-for="item in drawerItems" :key="item.label">
-        <q-separator v-if="item.props && item.props.includes('separator-top')" />
         <q-item
           clickable
           :class="`text-${
@@ -87,7 +79,7 @@
       </q-list>
     </q-drawer> 
 
-    <q-page-container class="col-12  " style="padding-top: 0px !important" >
+    <q-page-container class="col-12  "  >
        
       <router-view />
     </q-page-container>
@@ -115,7 +107,7 @@ import Background from 'src/components/Background.vue'
 
 
 
-const isDrawerOpen = ref(false);
+const isDrawerOpen = ref(true);
 defineOptions({
   name: 'MainLayout'
 });
@@ -133,33 +125,27 @@ const router = useRouter();
 
 const drawerItems: Array<DrawerItemInfo> = [
   {
-    label: 'Perfil',
-    icon: 'fa-solid fa-user-circle',
-    to: 'profile-doctor',
-    targetRouteNames: ['profile-doctor'],
-    
-  },
-   {
-    label: 'Pacientes',
-    icon: 'fa-regular fa-face-smile',
-    to: 'patients',
-    targetRouteNames: ['patients'],
-    props: ['separator-top'],
+    label: 'Home',
+    icon: 'home',
+    to: 'home',
+    targetRouteNames: ['home'],
   },
   {
-    label: 'Agenda',
-    icon: 'fa-regular fa-calendar',
-    targetRouteNames: ['Panel-profile'],
-    
+    label: 'Pacientes',
+    icon: 'person',
+    to: 'Pacientes',
+    targetRouteNames: ['Pacientes'],
   },
   {
     label: 'Tratamientos',
     icon: 'fas fa-clipboard-check',
     targetRouteNames: ['Panel-profile'],
-    
   },
-
-  
+  {
+    label: 'Agenda',
+    icon: 'fa-regular fa-calendar',
+    targetRouteNames: ['Panel-profile'],
+  },
 ];
 function handleClick(items: DrawerItemInfo[]): void {
   items.forEach((item) => {

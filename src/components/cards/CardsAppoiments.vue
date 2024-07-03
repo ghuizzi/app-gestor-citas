@@ -3,39 +3,42 @@
         <p class="text-weight-bold " >Status:</p>
 
         <div class="flex items-center q-pl-sm">
-            <q-icon size="20px" color="green" name="fa-solid fa-circle" ></q-icon>
+            <q-icon size="20px" style="color:#27ae60" name="fa-solid fa-circle" ></q-icon>
             <p class="q-pl-sm" >Confirmado</p>
         </div>
 
         <div class="flex items-center q-pl-sm">
-            <q-icon size="20px" color="orange" name="fa-solid fa-circle" ></q-icon>
+            <q-icon size="20px" style="color: #e67e22" name="fa-solid fa-circle" ></q-icon>
             <p class="q-pl-sm" >Pendiente</p>
         </div>
 
         <div class="flex items-center q-pl-sm">
-            <q-icon size="20px" color="red" name="fa-solid fa-circle" ></q-icon>
+            <q-icon size="20px" style="color:#e74c3c" name="fa-solid fa-circle" ></q-icon>
             <p class="q-pl-sm" >Cancelado</p>
         </div>
 
     </div>
-    <div v-for="(patient, index) in patients" :key="index" :class="{'q-mb-sm': index < patients.length - 1}" class="col-12 col-md-6 row q-pa-sm items-center "  >
-        <div class="col-12 bg-white border-simple q-pa-xs row">
-            <div class="col-3 col-md-3 flex flex-center " >
-                    <q-icon size="40px" :color="statusPatient(patient.status)" :name="patient.icon" />
-            </div>
-            <div class=" col-8 col-md-9  " >
-                <div class="text-bold text-grey-7 ">
-                    <p>{{patient.name}}</p>
+    <div class="col-12 height-appoiments row">
+        <div v-for="(patient, index) in patients" :key="index" :class="{'q-mb-sm': index < patients.length - 1}" class="col-12 col-md-11 row q-pa-sm items-center  "  >
+            <div class="col-12 bg-white border-simple q-pa-xs row">
+                <div class="col-3 col-md-3 flex flex-center " >
+                    <q-icon size="40px" :style="{ color: statusPatient(patient.status)}" :name="patient.icon" />
                 </div>
-                <div class=" ">
-                    <p>Motivo: {{patient.motivo}}</p>
-                </div>
-                <div  >
-                    <p>Fecha: {{patient.date}}</p>
+                <div class=" col-8 col-md-9  " >
+                    <div class="text-bold text-grey-7 ">
+                        <p>{{patient.name}}</p>
+                    </div>
+                    <div class=" ">
+                        <p>Motivo: {{patient.motivo}}</p>
+                    </div>
+                    <div  >
+                        <p>Fecha: {{patient.date}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 </template>
 
 <script lang="ts">
@@ -48,13 +51,13 @@ export default defineComponent({
 
             switch (status) {
                 case 1:
-                        return 'green'
+                        return '#27ae60'
                 break;
                 case 2:
-                        return 'orange'
+                        return '#e67e22'
                 break;
                 case 3:
-                        return 'red'
+                        return '#e74c3c'
                 break;
                 default:
                     break;

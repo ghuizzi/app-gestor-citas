@@ -1,6 +1,6 @@
 <template>
-    <div class="row justify-center q-px-md">
-        <div class="col-12 glass col-md-11 row q-pa-md items-stretch ">
+    <div class="row screen-height items-center justify-center q-px-md">
+        <div style="height: fit-content" class="col-12 glass col-md-11 row q-pa-md items-stretch ">
 
             <div class="col-12 col-md-6 row items-stretch">
                 <div class="col-12 text-center q-py-sm ">
@@ -14,7 +14,7 @@
                 <v-panel>
                     <div class="flex row justify-between items-center q-pb-md " >
                         <div class="col-12 text-weight-bolder  text-subtitle1" >Próximas citas</div>
-                        <div class="col-md-9 flex row ">
+                        <div class="col-md-12 flex row ">
                             <div class="q-pr-md col-6 "  >
                                <q-input placeholder="Buscar ..." outlined rounded v-model="search"  type="search" dense>
                                     <template v-slot:append>

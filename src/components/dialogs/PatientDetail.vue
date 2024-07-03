@@ -2,7 +2,7 @@
 
     <q-dialog v-model="state" persistent>
       <q-card style="width: 100%" >
-        <q-bar class="row bg-blue " >
+        <q-bar class="row bg-primary " >
             <div class="col-2">
 
             </div>
@@ -19,7 +19,7 @@
         <q-card-section style="width: 100%" class="q-pa-sm row justify-center" >
 
             <div class="col-12 col-md-6 q-pa-lg flex flex-center ">
-                <q-img style="width:70%" src="/account.png" ></q-img>
+                <q-icon name="person" color="primary" size="120px" > </q-icon>
             </div>
 
             <div class="col-12 col-md-6 row ">
@@ -44,15 +44,6 @@
 
                 <div class="col-12 flex items-center q-my-sm ">
                     <p class="text-h6">
-                        Cédula:
-                    </p>
-                    <p class="q-pl-sm" >
-                        27000000
-                    </p>
-                </div>
-
-                <div class="col-12 flex items-center q-my-sm ">
-                    <p class="text-h6">
                         Próxima cita:
                     </p>
                     <p class="q-pl-sm" >
@@ -64,8 +55,7 @@
 
             <div class="col-md-10">
                 <p class="text-h6">
-                    Comentarios: <span class="text-body1" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam adipisci in, delectus sint officia tempore consectetur maxime ipsum aspernatur veritatis.
-                    Comentarios: </span>
+                    Nota: <span class="text-body1" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam adipisci in, delectus sint officia tempore consectetur maxime ipsum aspernatur veritatis.</span>
                 </p>
             </div>
 

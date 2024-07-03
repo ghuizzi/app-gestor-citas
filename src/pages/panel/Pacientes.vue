@@ -1,36 +1,22 @@
 <template>
-    <div class="row full-width justify-center q-px-md">
-       <div class="col-11 bg-glass shadow-2 rounded col-md-10 row">
-
-        <div class="col-12 text-center text-dark ">
-            <p class="text-h4 q-py-md">
-                Lista de pacientes
-            </p>
-        </div>
+    <div class="row screen-height items-center full-width justify-center q-px-md">
+       <div style="height: fit-content" class="col-11 bg-glass shadow-2 rounded col-md-11 row">
         
-        <div class="col-12 row q-pa-md ">
+            <div class="col-12 row q-pa-md ">
 
-            <PatientsCards/>
+                <PatientsTable />
 
-        </div>
+            </div>
 
        </div>
 
-
     </div>
 </template>
-<script lang="ts">
-import PatientsCards from 'src/components/cards/PatientsCards.vue'
-export default {
-components:{
-    PatientsCards
-},
-    setup() {
-        return {
-        }
-    }
-}
+<script setup lang="ts">
+import PatientsTable from 'src/components/tables/PatientsTable.vue'
+
 </script>
+
 <style >
 
 </style>

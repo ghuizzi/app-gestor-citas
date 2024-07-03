@@ -2,6 +2,15 @@ p{
     margin-bottom: 0px;
 }
 
+.screen-height{
+    height: 90vh;
+}
+
+.height-appoiments{
+    max-height: 45vh;
+    overflow-y: scroll;
+}
+
 .border-simple{
     border: 1px solid  rgb(214, 212, 212);
     border-radius: 5px;
@@ -22,10 +31,8 @@ p{
 
 .svg_circle{
     position: absolute;
-    top: -102px;
-    left: -303px;
-    
-    
+    top: -35px;
+    left: -60px;
 }
 .glass{
 /* From https://css.glass */

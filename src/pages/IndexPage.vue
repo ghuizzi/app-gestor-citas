@@ -1,13 +1,10 @@
 <template>
-  <q-page class="row items-start justify-center">
+  <q-page class="row screen-height items-center justify-center">
 
-    <div class="col-12 row flex flex-center">
-      <div class="text-h6 q-pr-md flex items-center q-mt-xl" >
+    <div style="height: fit-content" class="col-12 row flex flex-center">
+      <div class="text-h6 q-pr-md flex items-center " >
         <q-icon name="fa-solid fa-tooth" color="blue" size="100px" ></q-icon>
         <p class="text-h3">Clinica Dental</p>
-      </div>
-      <div class="col-10 col-6 flex flex-center q-mt-md">
-        <q-img style="width:15%" src="/account.png" ></q-img>
       </div>
     </div>
 
@@ -15,5 +12,6 @@
 </template>
 
 <script setup lang="ts">
+import MenuCards from 'src/components/cards/MenuCards.vue';
 
 </script>
