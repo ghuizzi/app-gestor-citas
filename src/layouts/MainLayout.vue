@@ -51,6 +51,9 @@
       style="border-right: solid 1px #00000022"
     >
       <q-list>
+        <div class=" q-pa-md flex flex-center ">
+          <q-img style="width: 70%" src="/account.png" ></q-img>
+        </div>
        <template v-for="item in drawerItems" :key="item.label">
         <q-item
           clickable
@@ -139,12 +142,14 @@ const drawerItems: Array<DrawerItemInfo> = [
   {
     label: 'Tratamientos',
     icon: 'fas fa-clipboard-check',
-    targetRouteNames: ['Panel-profile'],
+    to: "Tratamientos",
+    targetRouteNames: ['Tratamientos'],
   },
   {
     label: 'Agenda',
     icon: 'fa-regular fa-calendar',
-    targetRouteNames: ['Panel-profile'],
+    to: "Proxímas citas",
+    targetRouteNames: ['Proxímas citas'],
   },
 ];
 function handleClick(items: DrawerItemInfo[]): void {

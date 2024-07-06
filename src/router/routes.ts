@@ -12,10 +12,11 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('../layouts/MainLayout.vue'),
     children: [
-      { path: '/inicio', name: 'home', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/IndexPage.vue') },
+      { path: '/', name: 'home', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/IndexPage.vue') },
       { path: '/pacientes', name: 'Pacientes', meta: { drawerName: 'Panel', title: 'Pacientes',}, component: () => import('../../src/pages/panel/Pacientes.vue') },
       { path: '/newpaciente', name: 'Nuevo paciente', meta: { drawerName: 'Panel', title: 'Pacientes',}, component: () => import('../../src/pages/panel/AgregarPaciente.vue') },
-      { path: '/', name: 'Proxímas citas', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/panel/Doctor.vue') },
+      { path: '/citas', name: 'Proxímas citas', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/panel/Doctor.vue') },
+      { path: '/tratamientos', name: 'Tratamientos', meta: { drawerName: 'Panel', title: 'Tratamientos',}, component: () => import('../../src/pages/panel/Tratamientos.vue') },
       { path: '/newtratamiento', name: 'Nuevo tratamiento', meta: { drawerName: 'Panel', title: 'Inicio',}, component: () => import('../../src/pages/panel/AgregarTratamiento.vue') },
       {path:'/profile', name: 'profile-doctor', meta: {drawerName: 'Panel', title: 'Inicio',},component: ()=>import('../../src/pages/panel/Profile.vue')},
       {path:'/patients', name: 'patients', meta: {drawerName: 'Panel', title: 'Inicio',},component: ()=>import('../../src/pages/panel/Patients.vue')}
