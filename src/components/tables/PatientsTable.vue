@@ -41,10 +41,12 @@
 </template>
 
 <script setup lang="ts">
+import {ref} from 'vue'
 import { useDialogStore } from "src/stores/DialogStore"
 import NewPatient from "../dialogs/NewPatient.vue"
 import PatientDetail from "../dialogs/PatientDetail.vue"
 const dialogStore = useDialogStore()
+const filter = ref('')
 
 const columns = [
   { name: 'ID', align: 'center', label: 'ID', field: 'ID'},

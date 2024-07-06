@@ -41,17 +41,20 @@
 </template>
 
 <script setup lang="ts">
+import {ref} from 'vue'
 import { useDialogStore } from "src/stores/DialogStore"
 import NewTreatment from "../dialogs/NewTreatment.vue"
 import TreatmentDetail from "../dialogs/TreatmentDetail.vue"
 const dialogStore = useDialogStore()
 
-const columns = [
+const filter = ref('')
+
+const columns = ref([
   { name: 'ID', align: 'center', label: 'ID', field: 'ID'},
   { name: 'nombre', align: 'center', label: 'Nombre', field: 'nombre'},
   { name: 'phone', align: 'center', label: 'Telélefono', field: 'phone'},
   { name: 'options', align: 'center', label: 'Opciones', field: 'options'},
-]
+])
 
 const rows = [
   {

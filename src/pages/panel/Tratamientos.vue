@@ -11,7 +11,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import TreatmentsTable from "src/components/tables/PatientsTable.vue"
+import TreatmentsTable from "src/components/tables/treatmentsTable.vue"
 </script>
 
 <style >
