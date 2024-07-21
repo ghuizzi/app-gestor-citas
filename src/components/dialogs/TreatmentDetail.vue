@@ -1,7 +1,7 @@
 <template>
 
     <q-dialog v-model="state" persistent>
-      <q-card style="width: 100%" >
+      <q-card style="width: 100% ;  overflow-x: hidden;" >
         <q-bar class="row bg-primary " >
             <div class="col-2">
 

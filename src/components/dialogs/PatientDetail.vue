@@ -1,7 +1,7 @@
 <template>
 
     <q-dialog v-model="state" persistent>
-      <q-card style="width: 100%" >
+      <q-card style="width: 100%; overflow-x: hidden;"  >
         <q-bar class="row bg-primary " >
             <div class="col-2">
 
@@ -29,7 +29,7 @@
                         Nombre:
                     </p>
                     <p class="q-pl-sm" >
-                        John Doe
+                        {{ patient.name }}
                     </p>
                 </div>
 
@@ -38,7 +38,7 @@
                         Teléfono:
                     </p>
                     <p class="q-pl-sm" >
-                        0412-0000000
+                        {{ patient.phone }}
                     </p>
                 </div>
 
@@ -55,7 +55,7 @@
 
             <div class="col-md-10">
                 <p class="text-h6">
-                    Nota: <span class="text-body1" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam adipisci in, delectus sint officia tempore consectetur maxime ipsum aspernatur veritatis.</span>
+                    Nota: <span class="text-body1" > {{patient.description }}</span>
                 </p>
             </div>
 
@@ -67,11 +67,27 @@
     
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script setup lang="ts">
+import { ref } from 'vue';
+import { computed, onMounted } from 'vue'
 import {useDialogStore} from 'src/stores/DialogStore'
-export default defineComponent({
-    setup() {
+import axios from 'axios'
+import {API_URL} from 'src/config'
+
+const props = defineProps({
+   id: {type: Number, required: true},
+   data: Object
+})
+
+const data = ref({})
+
+const namePatient = ref<string>('')
+const phonePatient = ref<string>('')
+const description = ref<string>('')
+    const patient = ref<{ name: string, phone: string, description: string }>({})
+const emits = defineEmits(['reload'])
+
+
 
         const dialogStore = useDialogStore()
 
@@ -80,11 +96,18 @@ export default defineComponent({
         const close = () => {
             dialogStore.TogglePatientDetail()
         }
+        const getPatientDetail = () => {
+            axios.get(`${API_URL}patients/${props.id}`).then((response) => {
+                patient.value = response.data
+                namePatient.value = patient.value.name
+                phonePatient.value = patient.value.phone
+                description.value = patient.value.description
+            }).catch((err) => console.log(err))
+            }
 
-        return{
-            state,
-            close
-        }
-    },
+onMounted(()=>{
+   getPatientDetail()
 })
+        
+
 </script>

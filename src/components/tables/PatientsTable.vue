@@ -18,77 +18,140 @@
         </template>
       <template v-slot:body="props">
         <q-tr >
-          <q-td key="ID" :props="props">
-            {{ props.row.ID }}
-          </q-td>
+          
           <q-td key="nombre" :props="props">
-            {{ props.row.nombre }}
+            {{ props.row.name }}
           </q-td>
           <q-td key="phone" :props="props">
             {{ props.row.phone }}
           </q-td>
           <q-td key="options" :props="props">
-            <q-btn @click="openDialog" size="sm" round class="bg-primary text-white " icon="info" ></q-btn>
+            
+            <q-btn @click="detailPatient(props.row)"  round class=" text-primary text-bold " unelevated icon="info" ></q-btn>
+            <q-btn icon="edit"size="sm" @click="updatePatient(props.row)"  unelevated  round class=" text-primary  " />  
+            <q-btn icon="delete" size="xs" @click="confirm(props.row)"  unelevated  round class=" text-red-5" />  
+          
           </q-td>
         </q-tr>
       </template>
     </q-table>
 
-    <PatientDetail/>
+    <PatientDetail :id="currentId" :key="componentKey" :data="detail" @reload="recived" />
 
-    <NewPatient/>
+    <NewPatient :key="componentKey" :data="updateData" :id="currentId" @reload="recived" />
 
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref, onMounted} from 'vue'
+import axios from 'axios'
+import {Notify, useQuasar} from 'quasar'
 import { useDialogStore } from "src/stores/DialogStore"
 import NewPatient from "../dialogs/NewPatient.vue"
 import PatientDetail from "../dialogs/PatientDetail.vue"
+import { API_URL} from 'src/config'
+
+const data = ref([])
+
+const componentKey = ref()
+
+const updateData = ref({})
+
+const detail = ref({})
+
+const $q=useQuasar()
+const currentId = ref(0)
+
+const recived = () => {
+  dialogStore.ToggleNewPatient()
+  getPatients()
+}
+const currentPatient = ref({
+  name: '',
+  phone: '',
+  description: '',
+})
+
+
 const dialogStore = useDialogStore()
+
+
+
 const filter = ref('')
 
 const columns = [
-  { name: 'ID', align: 'center', label: 'ID', field: 'ID'},
+  
   { name: 'nombre', align: 'center', label: 'Nombre', field: 'nombre'},
   { name: 'phone', align: 'center', label: 'Telélefono', field: 'phone'},
   { name: 'options', align: 'center', label: 'Opciones', field: 'options'},
 ]
 
-const rows = [
-  {
-    ID: 1,
-    nombre: 'John Doe',
-    phone: '0414-0000000'
-  },
-  {
-    ID: 2,
-    nombre: 'John Doe',
-    phone: '0414-0000000'
-  },
-  {
-    ID: 3,
-    nombre: 'John Doe',
-    phone: '0414-0000000'
-  },
-  {
-    ID: 4,
-    nombre: 'John Doe',
-    phone: '0414-0000000'
-  },
-  {
-    ID: 5,
-    nombre: 'John Doe',
-    phone: '0414-0000000'
-  },
-]
+const rows = data
+
+const getPatients = () => {
+ axios.get(`${API_URL}patients`).then((Response) => {
+  data.value = Response.data
+ }).catch((err)=> console.log(err))
+}
 
 const openDialog = () => {
     dialogStore.TogglePatientDetail()
 }
 
 const addNewPatient = () => {
+    componentKey.value = componentKey.value + 1
+    currentId.value = 0
+    
     dialogStore.ToggleNewPatient()
 }
+const deletePatient = (id : number) => {
+  axios.delete(`${API_URL}patients/${id}`).then( (Response) => {
+    getPatients()
+    Notify.create({
+      type: 'negative',
+      message: 'Paciente eliminado',
+    })
+}).catch( (err) => {
+  console.log(err)
+  Notify.create({
+      type: 'negative',
+      message: 'error',
+    })
+} )
+}
+
+function confirm (data: any) {
+      $q.dialog({
+        title: 'Eliminar Paciente',
+        message: `Desea eliminar ${data.name}`,
+        cancel: true,
+        persistent: true
+      }).onOk(() => {
+        deletePatient(data.id)
+      }).onOk(() => {
+        // console.log('>>>> second OK catcher')
+      }).onCancel(() => {
+        // console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
+    }
+function updatePatient (data: any){
+  currentId.value = data.id
+  updateData.value = data
+  currentPatient.value = data 
+  componentKey.value = componentKey.value + 1
+  dialogStore.ToggleNewPatient()
+
+}
+
+function detailPatient (data:any){
+  currentId.value = data.id
+  detail.value = data
+  componentKey.value = componentKey.value + 1
+  dialogStore.TogglePatientDetail()
+}
+
+onMounted( () => getPatients())
 
 </script>
