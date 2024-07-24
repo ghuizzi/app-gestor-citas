@@ -4,7 +4,7 @@ export function notEmpty(val: string): boolean | string {
     }
 
     // Validación adicional: Verificar si contiene solo letras
-    const onlyLetters = /^[A-Za-z]+$/.test(val);
+    const onlyLetters = /^[A-Za-z\s]+$/.test(val);
     if (!onlyLetters) {
         return 'El campo debe contener solo letras';
     }

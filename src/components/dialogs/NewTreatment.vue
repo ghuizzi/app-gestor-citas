@@ -2,60 +2,72 @@
 
     <q-dialog v-model="state" persistent>
       <q-card style="width: 100% ; overflow-x: hidden;" >
-        <q-bar class="row bg-primary  " >
-            <div class="col-2">
-            </div>
-            <div class="col-8 text-center  ">
-                <p class="text-white"  > {{ $props.id == 0 ? 'Agregar tratamiento' : 'Editar tratamiento' }} </p>
-            </div>
-            <div class="col-2 flex justify-end q-pr-sm">
-                <q-btn class="text-white" dense flat icon="close" @click="close()" >
+        <div class="row   " >
+            <div class="col-12 flex justify-end q-pa-sm">
+                <q-btn  dense flat icon="close" @click="close()" >
                     <q-tooltip>Close</q-tooltip>
                 </q-btn>
             </div>
-        </q-bar>
+            <div class="col-8 text-center  ">
+                <div class="text-h5 text-bold "  > {{ $props.id == 0 ? 'Agregar Tratamiento' : 'Editar Tratamiento' }} </div>
+            </div>
+            
+        </div>
 
-        <q-card-section style="width: 100%" class="q-pa-sm row justify-center" >
+        <div style="width: 100%" class="q-pa-sm row justify-center" >
 
-            <div class="col-12 col-md-12 row justify-center" >
-                <q-form style="align-items: flex-end" class=" col-12 col-sm-8  bg-glass-dark col-md-10 q-pa-lg row">
-                    
-                    <div class="col-12 col-md-6 q-px-sm">
-                        <div>
-                            <p>Nombre*</p>
+            <div class="col-12 col-md-12 row justify-center items-center" >
+                <q-form style="align-items: flex-end" class=" col-12 col-sm-8  bg-glass-dark col-md-10  row q-py-md ">
+                    <div class="col-12 row items-center  " >
+                        <div class="col-12 row col-md-6  items-center q-px-sm q-py-sm">
+                            <div class="col-2">
+                                <q-icon size="md" color="primary" name="medical_services" />
+                            </div>
+                            <div class="col-10 no-padding ">
+                                <q-input label="Tratamiento" placeholder="Nombre" class="no-padding"  outlined dense v-model="nameTreatments" :rules="[notEmpty]"  />
+                            </div>
+                            
                         </div>
-                        <q-input outlined dense v-model="nameTreatments" :rules="[notEmpty]"  />
-                    </div>
 
-                    <div class="col-12 col-md-6 q-px-sm text-center">
-                        <div>
-                            <p>Duración*</p>
+                    <div class="col-12 col-md-6 row q-px-sm items-center q-py-sm ">
+                        <div class="col-2 row ">
+                            <q-icon color="primary" size="md" name="schedule" />
+
                         </div>
-                        <div class="col-12 col-md-6 row  q-pt-md  ">
-                            <div class="col-12 flex row justify-center"> 
-                                <div class="col-6  flex row justify-center">
-                                    <div class="text-center col-12">Horas</div>
-                                        <q-input v-model="hours" type="number" min="0" max="23" />
+                        <div class="col-10 row justify-between  ">
+                            
+                                <div class="col-5 ">
+                                    
+                                        <q-input v-model="hours" outlined dense placeholder="Hrs"  type="number" min="0" max="23" />
                                     </div>
-                                <div class="col-6 row flex justify-center">
-                                    <div class="text-center col-12" >Minutos</div>
-                                        <q-input v-model="minutes" type="number" min="0" max="59" />
+                                    <div class="row items-center" >
+                                        -
+                                    </div>
+                                <div class="col-5  ">
+                                 
+                                        <q-input v-model="minutes" outlined dense placeholder="Min" type="number" min="0" max="59" />
                                     </div>
                                 </div>
-                        </div> 
+                        
+                    </div>
                     </div>
                     
-                    <div class="col-12">
-                        <div >Descripción <span class="text-caption" >(opcional)</span></div>
-                        <q-input outlined v-model="description" dense type="textarea" />
+                   
+                    
+                    <div class="col-12 row q-pt-md q-px-sm ">
+                        <div class="col-1 "><q-icon size="md" color="primary" name="info"/></div>
+                        <div class="col-11">
+                            <q-input outlined label="Descripción" v-model="description" dense type="textarea" />
+                        </div>
+                       
                     </div>
 
-                    <div  v-if="$props.id==0" class="col-12 flex justify-end q-pt-md "> <q-btn @click="addNewTreatment" color="primary" dense label="Guardar"/></div>
+                    <div  v-if="$props.id==0" class="col-12 row justify-center q-pt-md "> <q-btn @click="addNewTreatment" class="col-8" color="primary" dense label="Agregar Tratamiento"/></div>
                     <div  v-if="$props.id !=0" class="col-12 flex justify-end q-pt-md "> <q-btn @click="updateTreatment" color="primary" dense label="Editar"/></div>
                 </q-form>
             </div> 
 
-        </q-card-section>
+        </div>
 
       </q-card>
     </q-dialog>
@@ -76,8 +88,8 @@ const props = defineProps({
 })
 
     const nameTreatments = ref('')
-    const hours = ref(0)
-    const minutes = ref(0)
+    const hours = ref()
+    const minutes = ref()
     const description = ref('')
     
     const emits = defineEmits(['reload'])

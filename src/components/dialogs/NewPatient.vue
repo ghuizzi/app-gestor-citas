@@ -2,53 +2,55 @@
 
     <q-dialog v-model="state" persistent>
       <q-card style="width: 100%;  overflow-x: hidden;" >
-        <q-bar class="row bg-primary " >
-            <div class="col-2">
-            </div>
-            <div class="col-8 text-center ">
-                <p class="text-white" > {{ $props.id == 0 ? 'Agregar paciente' : 'Editar paciente' }}</p>
-            </div>
-            <div class="col-2 flex justify-end q-pr-sm">
+        <div class="row bg-primary q-py-sm justify-between " >
+            <div class="col-12 flex justify-end q-pr-sm">
                 <q-btn class="text-white" dense flat icon="close" @click="close()" >
                     <q-tooltip>Close</q-tooltip>
                 </q-btn>
             </div>
-        </q-bar>
+            <div class="col-12 text-center ">
+                <div class="text-white text-center text-h5 text-bold" > {{ $props.id == 0 ? 'Agregar nuevo paciente' : 'Editar paciente' }}</div>
+            </div>
+            
+        </div>
 
-        <q-card-section style="width: 100%" class="q-pa-sm row justify-center" >
+        <div style="width: 100%" class=" row justify-center" >
 
             <div class=" col-12 justify-center row" >
-                <q-form class=" bg-glass-dark col-12 col-sm-6 col-md-10 q-pa-lg row ">
+                <q-form class=" bg-glass-dark col-10 col-md-7  row q-py-md ">
 
-                    <div class="col-12 flex flex-center ">
-
-                        <q-icon name="person" color="primary" size="120px" ></q-icon>
-
-                    </div>
-
-                    <div class="col-12 col-md-6 q-px-sm">
-                        <div><p>Nombre*</p></div>
-                        <q-input outlined dense rounded v-model="namePatient"   />
-                    </div>
-
-                    <div class="col-12 col-md-6 q-px-sm">
-                        <div><p>Número de teléfono*</p></div>
-                        <q-input rounded v-model="phonePatient" outlined dense  />
-                    </div>
                     
-                    <div class="col-12 q-px-sm ">
-                        <div><p>Nota adicional</p></div>
-                        <q-input type="textarea" v-model="description" outlined dense hint="Incluya información especial (alergias, preferecias, etc.)" />
+
+                    <div class="col-12 flex q-pb-sm">
+                         <q-icon name="person" color="primary" size="sm" />
+                        <div>Nombre*</div>
+                       
                     </div>
+
+                    <q-input outlined dense class="col-12" v-model="namePatient" :rules="[notEmpty]"   />
+
+                    <div class="col-12 flex   q-pt-md q-pb-sm">
+                        <q-icon name="phone" color="primary" size="sm" />
+                        <div>Número de teléfono*</div>
+                        
+                    </div>
+                    <q-input class="col-12"  v-model="phonePatient" outlined dense  />
                     
-                    <div class="col-12 flex justify-end q-pt-md "> 
-                        <q-btn v-if ="$props.id != 0" @click="updatePatient" class="bg-primary text-white " label="Editar"/>
-                        <q-btn v-if ="$props.id == 0" @click="addNewPatient" class="bg-primary text-white " label="Guardar"/>
+                    <div class="col-12 flex q-pt-md q-pb-sm">
+                        <q-icon name="description" color="primary" size="sm" />
+                        <div>Nota adicional</div>
+                       
+                    </div>
+                    <q-input type="textarea" class="col-12"  v-model="description" outlined dense hint="Incluya información especial (alergias, preferecias, etc.)" />
+                    
+                    <div class="col-12 row justify-center q-pt-md "> 
+                        <q-btn v-if ="$props.id != 0" @click="updatePatient" class="bg-primary text-white" label="Editar Paciente"/>
+                        <q-btn v-if ="$props.id == 0" @click="addNewPatient" class="bg-primary text-white col-10 " label="Agregar Paciente"/>
                     </div>
                 </q-form>
             </div>
 
-        </q-card-section>
+        </div>
 
       </q-card>
     </q-dialog>

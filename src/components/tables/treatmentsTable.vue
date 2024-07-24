@@ -8,13 +8,13 @@
       class="col-12"
     >
         <template v-slot:top-right>
-            <q-input outlined rounded dense debounce="300" v-model="filter" placeholder="Search">
+            <q-input outlined  dense debounce="300" v-model="filter" placeholder="Search">
             <template v-slot:append>
                 <q-icon name="search" />
             </template>
             </q-input>
 
-            <q-btn @click="addNewTreatment" icon="add" rounded size="sm" class=" q-mx-sm bg-primary text-white" label="Agregar" ></q-btn>
+            <q-btn @click="addNewTreatment" icon="add"  class=" q-mx-sm bg-primary text-white" label="Agregar" ></q-btn>
         </template>
       <template v-slot:body="props">
         <q-tr >

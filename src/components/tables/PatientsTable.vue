@@ -8,13 +8,13 @@
       class="col-12"
     >
         <template v-slot:top-right>
-            <q-input outlined rounded dense debounce="300" v-model="filter" placeholder="Search">
+            <q-input outlined  dense debounce="300" v-model="filter" placeholder="Search">
             <template v-slot:append>
                 <q-icon name="search" />
             </template>
             </q-input>
 
-            <q-btn @click="addNewPatient" icon="add" rounded size="sm" class=" q-mx-sm bg-primary text-white" label="Agregar" ></q-btn>
+            <q-btn @click="addNewPatient" icon="add" size="" class=" q-mx-sm bg-primary text-white" label="Agregar" ></q-btn>
         </template>
       <template v-slot:body="props">
         <q-tr >
@@ -50,7 +50,7 @@ import { useDialogStore } from "src/stores/DialogStore"
 import NewPatient from "../dialogs/NewPatient.vue"
 import PatientDetail from "../dialogs/PatientDetail.vue"
 import { API_URL} from 'src/config'
-
+import { notEmpty } from 'src/helpers/form/rules'
 const data = ref([])
 
 const componentKey = ref()
